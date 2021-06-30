@@ -1,0 +1,55 @@
+.grid {
+  width: 500px;
+  height: 700px;
+  overflow-y: hidden;
+  font-size: 200px;
+  text-align: center;
+  background-image: url("./class_background.png");
+
+  /* background-color: cadetblue; */
+  background-size: 500px 700px;
+  border: 1px solid black;
+  position: relative;
+}
+
+.supermat {
+  width: 70px;
+  height: 95px;
+  background-image: url("./Supermat_V3.png");
+  /* background-color: red; */
+  background-size: 70px 95px;
+  position: absolute;
+}
+.progClass {
+  width: 100px;
+  height: 25px;
+  /* background-color: lightseagreen; */
+  /* background-image: url("./Prog_logos/1.png"); */
+  background: url("./Prog_logos/1.png");
+  background-size: 25px 25px;
+  position: absolute;
+}
+
+.mate {
+  width: 35px;
+  height: 35px;
+  /* background-color: green; */
+  background: url("./mate.png");
+  background-size: 35px 35px;
+  position: absolute;
+}
+
+.meeting {
+  width: 150px;
+  height: 25px;
+  /* background-color: greenyellow; */
+  background: url("./google-meet-logo.png");
+  background-size: 25px 25px;
+  position: absolute;
+}
+@media only screen and (max-width: 1600px) {
+  .grid {
+    width: 500px;
+    height: 600px;
+  }
+}
