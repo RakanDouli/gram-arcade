@@ -1,7 +1,7 @@
 let scoreboard = [];
 
 async function getScoreboard() {
-  let url = "https://gram-arcade.herokuapp.com//wonderkarla/scoreboard";
+  let url = "https://gram-arcade.herokuapp.com/wonderkarla/scoreboard";
   try {
     let res = await fetch(url);
     return await res.json();
@@ -408,7 +408,7 @@ scene("lose", ({ score, levelNumber }) => {
     if (scoreInput.value.length < 3) {
       return alert("Name has to have at least 3 characters");
     } else {
-      let url = `https://gram-arcade.herokuapp.com//wonderkarla/newscoreboard/${scoreInput.value}/${score}`;
+      let url = `https://gram-arcade.herokuapp.com/wonderkarla/newscoreboard/${scoreInput.value}/${score}`;
       try {
         await fetch(url, {
           method: "POST",
