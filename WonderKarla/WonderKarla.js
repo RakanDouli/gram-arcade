@@ -1,3 +1,30 @@
+let scoreboard = [];
+
+async function getScoreboard() {
+	let url = "http://localhost:4000/wonderkarla/scoreboard";
+	try {
+		let res = await fetch(url);
+		return await res.json();
+	} catch (error) {
+		console.log(error);
+	}
+}
+getScoreboard().then((res) => res.map((r) => scoreboard.push(r)));
+console.log(scoreboard);
+
+setTimeout(() => {
+	const scoreList = document.querySelector("#scoreboard");
+
+	console.log(scoreList);
+	let nodes = scoreboard.map((score) => {
+		let li = document.createElement("li");
+		li.textContent = `${score.name} (${score.score})`;
+		return li;
+	});
+
+	scoreList.append(...nodes);
+}, 500);
+
 kaboom({
 	global: true,
 	fullscreen: true,
@@ -5,7 +32,7 @@ kaboom({
 	debug: true,
 	clearColor: [0, 0, 100, 0.1],
 });
-// import picture from "./imgs/hj2GK4n.png";
+
 {
 	/* <a href="https://imgbb.com/"><img src="https://i.ibb.co/MSYv0sW/supermat-d.png" alt="supermat-d" border="0"></a> 
 	REACT blue<a href="https://imgbb.com/"><img src="https://i.ibb.co/PTQStFY/reactjs-logo.png" alt="reactjs-logo" border="0"></a>
@@ -83,11 +110,14 @@ scene("game", ({ level, score, levelNumber }) => {
 			"   ==      =    =   =  ==     =  =        =$  =  =$  =   =      =    =  =  =                       ",
 			"   =      =      =  =   =     =  =$    =  =$     =$      =      =    =  =   =                      ",
 			"  =*      =      =  =    =   =    =    =   =      =      =      =    =  =   =                      ",
-			"  =       =      =  =    =   ======    =    ==     ==    =*=%   =    =  ====                       ",
-			"  =       =      =  =    =  =      =   =      =      =   =      =  z =  =  =                       ",
-			"   = ^    =      =  =   =   =      =   =       =      =  =      =    =  =   =     %    p           ",
+			"  =       =      =  =    =   ======    =    ==     ==    =%=*   =    =  ====                       ",
+			"  =       =      =  =    =  =      =   =      =      =   =      =  z =  =  =       %                ",
+			"   = ^    =      =  =   =   =      =   =       =      =  =      =    =  =   =          p           ",
 			"   ==      =  z =   =  ==  =        =  =  =   =   =  =   =       =  =   =   =                      ",
-			"     ===    ====    ====   =        =  =   ===     ===   =====    ==    =    =  =========== ",
+			"     ===    ====    ====   =        =  =   ===     ===   =====    ==    =    =  ===========*        ",
+			"                                                                                                   ",
+			"                                                                                                   ",
+			"                                               ==== == == == == == == == == ====          ====      ",
 		],
 		[
 			"                                 ",
@@ -346,6 +376,50 @@ scene("lose", ({ score, levelNumber }) => {
 	keyPress("space", () => {
 		go("game", { level: 0, score: 0, levelNumber: 1 });
 	});
+
+	const canvas = document.getElementById("game-canvas");
+	console.log(canvas);
+
+	const scoreForm = document.createElement("FORM");
+	scoreForm.setAttribute("id", "myForm");
+	canvas.appendChild(scoreForm);
+
+	const msgToPlayer = document.createElement("p");
+	msgToPlayer.setAttribute("id", "msgToPlayer");
+	const textMsg = document.createTextNode(
+		"Please enter your name to be added to the scoreboard"
+	);
+	msgToPlayer.appendChild(textMsg);
+	document.getElementById("myForm").appendChild(msgToPlayer);
+
+	const scoreInput = document.createElement("INPUT");
+	scoreInput.setAttribute("type", "text");
+	scoreInput.setAttribute("value", "");
+	document.getElementById("myForm").appendChild(scoreInput);
+
+	const submitButton = document.createElement("BUTTON");
+	submitButton.setAttribute("type", "submit");
+	const buttonName = document.createTextNode("Submit");
+	submitButton.appendChild(buttonName);
+	document.getElementById("myForm").appendChild(submitButton);
+
+	submitButton.onclick = async function (event) {
+		event.preventDefault();
+		if (scoreInput.value.length < 3) {
+			return alert("Name has to have at least 3 characters");
+		} else {
+			let url = `http://localhost:4000/wonderkarla/newscoreboard/${scoreInput.value}/${score}`;
+			try {
+				await fetch(url, {
+					method: "POST",
+				});
+			} catch (error) {
+				console.log(error);
+			}
+			location.reload();
+		}
+	};
+	document.getElementById("myForm").appendChild(submitButton);
 });
 
 document.addEventListener("DOMContentLoaded", function () {
