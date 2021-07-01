@@ -1,0 +1,199 @@
+html {
+  font-family: "MinecraftiaRegular";
+  background-color: #071a3e;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: chartreuse; */
+  margin-top: 5.5rem;
+  margin-bottom: 2rem;
+}
+.logo img {
+  width: 25rem;
+}
+@media only screen and (max-width: 900px) {
+  .logo img {
+    width: 20rem;
+  }
+}
+.games {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.game {
+  width: 30rem;
+  height: 30rem;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.link i {
+  color: rgb(210, 210, 210);
+  font-size: 2rem;
+  margin-right: 0.4rem;
+}
+.link a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: rgb(210, 210, 210);
+  letter-spacing: 2px;
+  /* -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: rgb(210, 210, 210); */
+}
+.mat-image {
+  display: flex;
+  position: relative;
+  height: 23rem;
+  width: 17rem;
+}
+.mat-image .head {
+  width: 100%;
+  height: 100%;
+}
+.mat-image:hover .mouth {
+  bottom: 3.5rem;
+}
+.mat-image .mouth {
+  transition: all 0.5s ease;
+  width: 6rem;
+  height: 5.5rem;
+  position: absolute;
+  bottom: 5rem;
+  left: 5rem;
+}
+
+.karla-image {
+  display: flex;
+  position: relative;
+  height: 24rem;
+  width: 18rem;
+}
+.karla-image .head {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 3;
+}
+.karla-image .headbg {
+  width: 100%;
+  height: 100%;
+}
+.karla-image:hover .kmouth {
+  top: 8.2rem;
+}
+.karla-image .kmouth {
+  position: absolute;
+  transition: all 0.5s ease;
+  z-index: 2;
+  left: 5.9rem;
+  top: 7.2rem;
+  width: 3.9rem;
+}
+
+/* bg animation */
+#svgOne {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.7;
+}
+rect {
+  transition: 400ms all ease;
+}
+
+rect:nth-child(12n + 1):nth-child(-n + 11) {
+  transition-delay: 100ms;
+}
+
+rect:nth-child(12n + 2):nth-child(-n + 23) {
+  transition-delay: 200ms;
+}
+
+rect:nth-child(12n + 3):nth-child(-n + 35) {
+  transition-delay: 300ms;
+}
+
+rect:nth-child(12n + 4):nth-child(-n + 47) {
+  transition-delay: 400ms;
+}
+
+rect:nth-child(12n + 5):nth-child(-n + 59) {
+  transition-delay: 500ms;
+}
+
+rect:nth-child(12n + 6):nth-child(-n + 71) {
+  transition-delay: 600ms;
+}
+
+rect:nth-child(12n + 7):nth-child(-n + 83) {
+  transition-delay: 700ms;
+}
+
+rect:nth-child(12n + 8):nth-child(-n + 95) {
+  transition-delay: 800ms;
+}
+
+rect:nth-child(12n + 9):nth-child(-n + 107) {
+  transition-delay: 900ms;
+}
+
+rect:nth-child(12n + 10):nth-child(-n + 119) {
+  transition-delay: 1000ms;
+}
+
+rect:nth-child(12n + 11):nth-child(-n + 131) {
+  transition-delay: 1100ms;
+}
+
+rect:nth-child(12n + 12):nth-child(-n + 143) {
+  transition-delay: 1200ms;
+}
+
+rect:nth-child(12n + 13):nth-child(-n + 155) {
+  transition-delay: 1300ms;
+}
+
+rect:nth-child(12n + 14):nth-child(n + 26) {
+  transition-delay: 1400ms;
+}
+
+rect:nth-child(12n + 15):nth-child(n + 39) {
+  transition-delay: 1500ms;
+}
+
+rect:nth-child(12n + 16):nth-child(n + 52) {
+  transition-delay: 1600ms;
+}
+
+rect:nth-child(12n + 17):nth-child(n + 65) {
+  transition-delay: 1700ms;
+}
+
+rect:nth-child(12n + 18):nth-child(n + 78) {
+  transition-delay: 1800ms;
+}
+
+rect:nth-child(12n + 19):nth-child(n + 91) {
+  transition-delay: 1900ms;
+}
+
+.animate rect {
+  fill: #09265c;
+}

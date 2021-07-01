@@ -1,13 +1,54 @@
+// const axios = require("axios");
+
 window.onload = function () {
   const start = document.querySelector(".start");
-  console.log(start);
-  start.addEventListener("click", () => {
+  const tryButton = document.createElement("BUTTON");
+  tryButton.setAttribute("id", "goButton");
+  const buttonName = document.createTextNode("Start Game");
+  tryButton.appendChild(buttonName);
+  start.appendChild(tryButton);
+  tryButton.onclick = () => {
     startHandler();
-  });
+  };
 };
 
+function restart() {
+  startHandler();
+}
+
+let scoreboard = [];
+
+async function getScoreboard() {
+  let url = "http://localhost:4000/supermat/scoreboard";
+  try {
+    let res = await fetch(url);
+    return await res.json();
+  } catch (error) {
+    console.log(error);
+  }
+}
+getScoreboard().then((res) => res.map((r) => scoreboard.push(r)));
+console.log(scoreboard);
+
+setTimeout(() => {
+  const scoreList = document.querySelector("#scoreboard");
+
+  console.log(scoreList);
+  let nodes = scoreboard.map((score) => {
+    let li = document.createElement("li");
+    li.textContent = `${score.name} (${score.score})`;
+    return li;
+  });
+
+  scoreList.append(...nodes);
+}, 500);
 const startHandler = () => {
+  // const newstart = document.querySelector(".start");
+  // const startingbutton = document.getElementById("gobutton")
+  // newstart.removeChild("gobutton");
+
   const grid = document.querySelector(".grid");
+
   const supermat = document.createElement("div");
   let startPoint = 150;
   let supermatLeftSpace = 50;
@@ -30,6 +71,9 @@ const startHandler = () => {
   let leftTimerId;
   let rightTimerId;
   let score = 0;
+
+  // const livescore = document.getElementById("livescore");
+  // // const playerscore = document.createElement("p");
 
   function createSupermat() {
     grid.appendChild(supermat);
@@ -78,7 +122,7 @@ const startHandler = () => {
       let newProgClassBottom = 100 + i * progClassGap;
       let newProgClass = new ProgClass(newProgClassBottom);
       progClasses.push(newProgClass);
-      console.log(progClasses);
+      // console.log(progClasses);
     }
   }
   function moveProgClasses() {
@@ -92,12 +136,16 @@ const startHandler = () => {
           firstProgClass.classList.remove("progClass");
           progClasses.shift();
           score++;
-          console.log(progClasses);
+          // console.log(progClasses);
           let newProgClass = new ProgClass(700);
           progClasses.push(newProgClass);
         }
       });
     }
+  }
+
+  function createLivescore() {
+    document.getElementById("livescore").innerHTML = score;
   }
 
   class Mate {
@@ -118,7 +166,7 @@ const startHandler = () => {
       let newMateBottom = 850 + i * mateGap;
       let newMate = new Mate(newMateBottom);
       mateArr.push(newMate);
-      console.log(mateArr);
+      // console.log(mateArr);
     }
   }
   function moveMate() {
@@ -132,7 +180,7 @@ const startHandler = () => {
           firstmate.classList.remove("mate");
           mateArr.shift();
           score++;
-          console.log(mateArr);
+          // console.log(mateArr);
           let newMate = new Mate(1400);
           mateArr.push(newMate);
         }
@@ -158,7 +206,7 @@ const startHandler = () => {
       let newMeetingBottom = 1400 + i * meetingGap;
       let newMeeting = new Meeting(newMeetingBottom);
       meetingArr.push(newMeeting);
-      console.log(meetingArr);
+      // console.log(meetingArr);
     }
   }
   function moveMeeting() {
@@ -206,7 +254,7 @@ const startHandler = () => {
           supermatLeftSpace <= pclass.left + 100 &&
           !isJumping
         ) {
-          console.log("landed");
+          // console.log("landed");
           startPoint = supermatBottomSpace;
           jump();
         }
@@ -219,7 +267,7 @@ const startHandler = () => {
           supermatLeftSpace <= m.left + 35
           //   !isJumping
         ) {
-          console.log("got a mate");
+          // console.log("got a mate");
           startPoint = supermatBottomSpace + 200;
           jump();
         }
@@ -232,7 +280,7 @@ const startHandler = () => {
           supermatLeftSpace <= meet.left + 125 &&
           !isJumping
         ) {
-          console.log("stuck in a meeting");
+          // console.log("stuck in a meeting");
           startPoint = supermatBottomSpace - 150;
           score -= 1;
           jump();
@@ -241,11 +289,55 @@ const startHandler = () => {
     }, 30);
   }
   function gameOver() {
-    console.log("game over");
+    // console.log("game over");
     while (grid.firstChild) {
       grid.removeChild(grid.firstChild);
     }
-    grid.innerHTML = score;
+
+    const scoreForm = document.createElement("FORM");
+    scoreForm.setAttribute("id", "myForm");
+    grid.appendChild(scoreForm);
+
+    const msgToPlayer = document.createElement("p");
+    msgToPlayer.setAttribute("id", "msgToPlayer");
+    const textMsg = document.createTextNode(
+      "Please enter your name to be added to the scoreboard"
+    );
+    msgToPlayer.appendChild(textMsg);
+    document.getElementById("myForm").appendChild(msgToPlayer);
+
+    const scoreInput = document.createElement("INPUT");
+    scoreInput.setAttribute("type", "text");
+    scoreInput.setAttribute("value", "");
+    document.getElementById("myForm").appendChild(scoreInput);
+
+    const submitButton = document.createElement("BUTTON");
+    submitButton.setAttribute("type", "submit");
+    const buttonName = document.createTextNode("Submit");
+    submitButton.appendChild(buttonName);
+    document.getElementById("myForm").appendChild(submitButton);
+
+    submitButton.onclick = async function (event) {
+      event.preventDefault();
+      if (scoreInput.value.length < 3) {
+        return alert("Name has to have at least 3 characters");
+      } else {
+        let url = `http://localhost:4000/supermat/newscoreboard/${scoreInput.value}/${score}`;
+        try {
+          await fetch(url, {
+            method: "POST",
+          });
+        } catch (error) {
+          console.log(error);
+        }
+        location.reload();
+      }
+    };
+    document.getElementById("myForm").appendChild(submitButton);
+    // grid.appendChild(InputName);
+
+    // grid.innerHTML = score;
+
     isGameOver = true;
     clearInterval(upTimerId);
     clearInterval(downTimerId);
@@ -308,6 +400,38 @@ const startHandler = () => {
     clearInterval(leftTimerId);
   }
 
+  let node = document.getElementById("goButton");
+  if (node.parentNode) {
+    node.parentNode.removeChild(node);
+  }
+  const initialState = document.querySelector(".start");
+
+  const quitButton = document.createElement("BUTTON");
+  quitButton.setAttribute("id", "quit");
+  const quitButtonName = document.createTextNode("Quit Game");
+  quitButton.appendChild(quitButtonName);
+  initialState.appendChild(quitButton);
+
+  quitButton.onclick = () => {
+    location.reload();
+  };
+
+  // const restartButton = document.createElement("BUTTON");
+  // restartButton.setAttribute("id", "restart");
+  // const bName = document.createTextNode("Restart The Game");
+  // restartButton.appendChild(bName);
+  // initialState.appendChild(restartButton);
+
+  // restartButton.onclick = () => {
+  //   console.log("you clicked me?");
+
+  //   while (grid.firstChild) {
+  //     grid.removeChild(grid.firstChild);
+  //   }
+  //   grid.innerHTML = "";
+
+  //   score = 0;
+  // };
   function start() {
     if (!isGameOver) {
       createProgClass();
@@ -321,6 +445,9 @@ const startHandler = () => {
       setInterval(moveMeeting, 35);
       setInterval(moveProgClasses, 35);
       jump();
+      document.getElementById("yourscore").innerHTML = "Your Score";
+      createLivescore();
+      setInterval(createLivescore, 0.1);
       document.addEventListener("keydown", control);
     }
   }
