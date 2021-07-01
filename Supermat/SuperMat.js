@@ -19,7 +19,7 @@ function restart() {
 let scoreboard = [];
 
 async function getScoreboard() {
-  let url = "http://localhost:4000/supermat/scoreboard";
+  let url = "https://gram-arcade.herokuapp.com/supermat/scoreboard";
   try {
     let res = await fetch(url);
     return await res.json();
@@ -322,7 +322,7 @@ const startHandler = () => {
       if (scoreInput.value.length < 3) {
         return alert("Name has to have at least 3 characters");
       } else {
-        let url = `http://localhost:4000/supermat/newscoreboard/${scoreInput.value}/${score}`;
+        let url = `https://gram-arcade.herokuapp.com/supermat/newscoreboard/${scoreInput.value}/${score}`;
         try {
           await fetch(url, {
             method: "POST",
