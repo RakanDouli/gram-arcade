@@ -95,271 +95,271 @@ const monsterGrowl = new Audio("sounds/monsterGrowl.mp3");
 const bounce = new Audio("sounds/bounceSound.mp3");
 
 scene("game", ({ level, score, levelNumber }) => {
-  layers(["bg", "obj", "ui"], "obj");
+	layers(["bg", "obj", "ui"], "obj");
 
-  const maps = [
-    [
-      "                                                                                            ",
-      "                                                                                            ",
-      "                                                                                            ",
-      "  *                                                                                        ",
-      "              %       *%                      *      %                   %                       ",
-      "      p                                                                                        ",
-      "             ^                  ^                                                             ",
-      "     ===    ====    ====       ==      =   ===$   ===    ==%*   =    =  ===                        ",
-      "   ==      =    =   =  ==     =  =        =$  =  =$  =   =      =    =  =  =                       ",
-      "   =      =      =  =   =     =  =$    =  =$     =$      =      =    =  =   =                      ",
-      "  =*      =      =  =    =   =    =    =   =      =      =      =    =  =   =                      ",
-      "  =       =      =  =    =   ======    =    ==     ==    =%=*   =    =  ====                       ",
-      "  =       =      =  =    =  =      =   =      =      =   =      =  z =  =  =       %                ",
-      "   = ^    =      =  =   =   =      =   =       =      =  =      =    =  =   =          p           ",
-      "   ==      =  z =   =  ==  =        =  =  =   =   =  =   =       =  =   =   =                      ",
-      "     ===    ====    ====   =        =  =   ===     ===   =====    ==    =    =  ===========*        ",
-      "                                                                                                   ",
-      "                                                                                                   ",
-      "                                               ==== == == == == == == == == ====          ====      ",
-    ],
-    [
-      "                                 ",
-      "                                      ",
-      "                    ^                 ",
-      "                  hhhh                 ",
-      "                h                     ",
-      "     %                                ",
-      "         h*h%h                             ",
-      "   p                         *   p       ",
-      "                   ^   ^                ",
-      "hhhhhhhhh      hhhhhhhhhh   hhhhhhhh",
-      "         hhhh                         ",
-    ],
-    [
-      "c                                         c",
-      "c                         %%%%*%          c",
-      "c                                         c",
-      "c                %%%%%%                   c",
-      "c                                         c",
-      "c        %%%%%*              x x          c",
-      "c                          x x x          c",
-      "c    p                    x x x x  x  p   c",
-      "c               z   z  x x x x x  x       c",
-      "ccccccccccccccccccccccccccccccccccccccccccc",
-    ],
-  ];
+	const maps = [
+		[
+			"                                                                                            ",
+			"                                                                                            ",
+			"                                                                                            ",
+			"  *                                                                                        ",
+			"              %       *%                      *      %                   %                       ",
+			"      p                                                                                        ",
+			"             ^                  ^                                                             ",
+			"     ===    ====    ====       ==      =   ===$   ===    ==%*   =    =  ===                        ",
+			"   ==      =    =   =  ==     =  =        =$  =  =$  =   =      =    =  =  =                       ",
+			"   =      =      =  =   =     =  =$    =  =$     =$      =      =    =  =   =                      ",
+			"  =*      =      =  =    =   =    =    =   =      =      =      =    =  =   =                      ",
+			"  =       =      =  =    =   ======    =    ==     ==    =%=*   =    =  ====                       ",
+			"  =       =      =  =    =  =      =   =      =      =   =      =zzzz=  =  =       %                ",
+			"   = ^    =      =  =   =   =      =   =       =      =  =      =    =  =   =          p           ",
+			"   ==      =  z =   =  ==  =        =  =  =   =   =  =   =       =  =   =   =                      ",
+			"     ===    ====    ====   =        =  =   ===     ===   =====    ==    =    =  ===========%        ",
+			"                                                                                                   ",
+			"                                                                                                   ",
+			"                                               ==== == == == == == == == == ====          ====      ",
+		],
+		[
+			"                                 ",
+			"                                      ",
+			"                    ^                 ",
+			"                  hhhh                 ",
+			"                h                     ",
+			"     %                                ",
+			"         h*h%h                             ",
+			"   p                         *   p       ",
+			"                   ^   ^                ",
+			"hhhhhhhhh      hhhhhhhhhh   hhhhhhhh",
+			"         hhhh                         ",
+		],
+		[
+			"c                                         c",
+			"c                         %%%%*%          c",
+			"c                                         c",
+			"c                %%%%%%                   c",
+			"c                                         c",
+			"c        %%%%%*              x x          c",
+			"c                          x x x          c",
+			"c    p                    x x x x  x  p   c",
+			"c               z   z  x x x x x  x       c",
+			"ccccccccccccccccccccccccccccccccccccccccccc",
+		],
+	];
 
-  const audios = [funAudio, actionRockAudio, hero911Audio];
-  // const audiosPause = [funAudio, actionRockAudio, hero911Audio];
+	const audios = [funAudio, actionRockAudio, hero911Audio];
+	// const audiosPause = [funAudio, actionRockAudio, hero911Audio];
 
-  level > 0 && levelNumber <= audios.length && audios[level - 1].pause();
-  levelNumber <= audios.length && audios[level].play();
+	level > 0 && levelNumber <= audios.length && audios[level - 1].pause();
+	levelNumber <= audios.length && audios[level].play();
 
-  const levelCfg = {
-    width: 20,
-    height: 20,
-    "=": [sprite("block"), scale(0.05), solid()],
-    h: [sprite("html-block"), scale(0.03), solid()],
-    c: [sprite("css-block"), scale(0.04), solid()],
-    "^": [sprite("evil-react"), solid(), scale(0.08), "dangerous", body()],
-    "#": [sprite("good-react"), solid(), scale(0.05), "good-react", body()],
-    z: [sprite("evil-redux"), solid(), scale(0.03), "dangerous", body()],
-    $: [sprite("codaisseur-logo"), solid(), scale(0.04), "codaisseur-logo"],
-    "%": [sprite("surprise"), solid(), "CD-surprise", scale(0.04)],
-    "*": [sprite("surprise"), solid(), "react-surprise", scale(0.04)],
-    "}": [sprite("unboxed"), solid()],
+	const levelCfg = {
+		width: 20,
+		height: 20,
+		"=": [sprite("block"), scale(0.05), solid()],
+		h: [sprite("html-block"), scale(0.03), solid()],
+		c: [sprite("css-block"), scale(0.04), solid()],
+		"^": [sprite("evil-react"), solid(), scale(0.08), "dangerous", body()],
+		"#": [sprite("good-react"), solid(), scale(0.05), "good-react", body()],
+		z: [sprite("evil-redux"), solid(), scale(0.03), "dangerous", body()],
+		$: [sprite("codaisseur-logo"), solid(), scale(0.04), "codaisseur-logo"],
+		"%": [sprite("surprise"), solid(), "CD-surprise", scale(0.04)],
+		"*": [sprite("surprise"), solid(), "react-surprise", scale(0.04)],
+		"}": [sprite("unboxed"), solid()],
 
-    p: [sprite("DB-pipe"), solid(), scale(0.05), "DB-pipe"],
-    x: [sprite("blue-steel"), solid(), scale(0.5)],
-  };
+		p: [sprite("DB-pipe"), solid(), scale(0.05), "DB-pipe"],
+		x: [sprite("blue-steel"), solid(), scale(0.5)],
+	};
 
-  const gameLevel = addLevel(maps[level], levelCfg);
+	const gameLevel = addLevel(maps[level], levelCfg);
 
-  const scoreLabel = add([
-    text(score),
-    pos(80, 20),
-    layer("ui"),
-    {
-      value: score,
-    },
-  ]);
+	const scoreLabel = add([
+		text(score),
+		pos(80, 20),
+		layer("ui"),
+		{
+			value: score,
+		},
+	]);
 
-  const levelLabel = add([
-    text(levelNumber),
-    pos(80, 6),
-    layer("ui"),
-    {
-      value: levelNumber,
-    },
-  ]);
+	const levelLabel = add([
+		text(levelNumber),
+		pos(80, 6),
+		layer("ui"),
+		{
+			value: levelNumber,
+		},
+	]);
 
-  add([text("Score "), pos(30, 20)]);
-  add([text("Level "), pos(30, 6)]);
+	add([text("Score "), pos(30, 20)]);
+	add([text("Level "), pos(30, 6)]);
 
-  function big() {
-    let timer = 0;
-    let isBig = false;
-    return {
-      update() {
-        if (isBig) {
-          CURRENT_JUMP_FORCE = BIG_JUMP_FORCE;
-          timer -= dt();
-          if (timer <= 0) {
-            this.smallify();
-          }
-        }
-      },
-      isBig() {
-        return isBig;
-      },
-      smallify() {
-        cheekyAudio.pause();
-        levelNumber > 3 ? audios[2].play() : audios[level].play();
+	function big() {
+		let timer = 0;
+		let isBig = false;
+		return {
+			update() {
+				if (isBig) {
+					CURRENT_JUMP_FORCE = BIG_JUMP_FORCE;
+					timer -= dt();
+					if (timer <= 0) {
+						this.smallify();
+					}
+				}
+			},
+			isBig() {
+				return isBig;
+			},
+			smallify() {
+				cheekyAudio.pause();
+				levelNumber > 3 ? audios[2].play() : audios[level].play();
 
-        this.scale = vec2(0.05);
-        CURRENT_JUMP_FORCE = JUMP_FORCE;
-        timer = 0;
-        isBig = false;
-      },
-      biggify(time) {
-        levelNumber > 3 ? audios[2].pause() : audios[level].pause();
-        audios[level].pause();
-        cheekyAudio.play();
+				this.scale = vec2(0.05);
+				CURRENT_JUMP_FORCE = JUMP_FORCE;
+				timer = 0;
+				isBig = false;
+			},
+			biggify(time) {
+				levelNumber > 3 ? audios[2].pause() : audios[level].pause();
+				audios[level].pause();
+				cheekyAudio.play();
 
-        this.scale = vec2(0.1);
-        timer = time;
-        isBig = true;
-      },
-    };
-  }
+				this.scale = vec2(0.1);
+				timer = time;
+				isBig = true;
+			},
+		};
+	}
 
-  const player = add([
-    sprite("WONDER KARLA"),
-    solid(),
-    pos(100, 0),
-    body(),
-    big(),
-    origin("bot"),
-    scale(0.05),
-  ]);
+	const player = add([
+		sprite("WONDER KARLA"),
+		solid(),
+		pos(100, 0),
+		body(),
+		big(),
+		origin("bot"),
+		scale(0.05),
+	]);
 
-  player.action(() => {
-    camPos(player.pos);
-    camScale(1.8);
-  });
+	player.action(() => {
+		camPos(player.pos);
+		camScale(1.8);
+	});
 
-  function respawn_evil() {
-    let new_pos = rand(130, width());
-    new_pos = Math.floor(new_pos);
+	function respawn_evil() {
+		let new_pos = rand(130, width());
+		new_pos = Math.floor(new_pos);
 
-    randomEvil = add([
-      "dangerous",
-      sprite("evil-redux"),
-      solid(),
-      pos(new_pos, 0),
-      body(),
-      scale(0.03),
-    ]);
-  }
+		randomEvil = add([
+			"dangerous",
+			sprite("evil-redux"),
+			solid(),
+			pos(new_pos, 0),
+			body(),
+			scale(0.03),
+		]);
+	}
 
-  const loopTime = 10 / levelNumber;
-  loop(loopTime, () => {
-    console.log(loopTime);
-    monsterGrowl.play();
-    respawn_evil();
-  });
+	const loopTime = 10 / levelNumber;
+	loop(loopTime, () => {
+		console.log(loopTime);
+		monsterGrowl.play();
+		respawn_evil();
+	});
 
-  player.collides("DB-pipe", () => {
-    keyPress("down", () => {
-      respawnSound.play();
-      levelLabel.value++;
-      levelLabel.text = levelLabel.value;
-      go("game", {
-        level: (level + 1) % maps.length,
-        score: scoreLabel.value,
-        levelNumber: levelNumber + 1,
-      });
-    });
-  });
+	player.collides("DB-pipe", () => {
+		keyPress("down", () => {
+			respawnSound.play();
+			levelLabel.value++;
+			levelLabel.text = levelLabel.value;
+			go("game", {
+				level: (level + 1) % maps.length,
+				score: scoreLabel.value,
+				levelNumber: levelNumber + 1,
+			});
+		});
+	});
 
-  action("good-react", (m) => {
-    m.move(20, 0);
-  });
+	action("good-react", (m) => {
+		m.move(20, 0);
+	});
 
-  player.on("headbump", (obj) => {
-    bounce.play();
-    if (obj.is("CD-surprise")) {
-      gameLevel.spawn("$", obj.gridPos.sub(0, 1));
-      destroy(obj);
-      gameLevel.spawn("}", obj.gridPos.sub(0, 0));
-    }
-    if (obj.is("react-surprise")) {
-      gameLevel.spawn("#", obj.gridPos.sub(0, 1));
-      destroy(obj);
-      gameLevel.spawn("}", obj.gridPos.sub(0, 0));
-    }
-  });
+	player.on("headbump", (obj) => {
+		bounce.play();
+		if (obj.is("CD-surprise")) {
+			gameLevel.spawn("$", obj.gridPos.sub(0, 1));
+			destroy(obj);
+			gameLevel.spawn("}", obj.gridPos.sub(0, 0));
+		}
+		if (obj.is("react-surprise")) {
+			gameLevel.spawn("#", obj.gridPos.sub(0, 1));
+			destroy(obj);
+			gameLevel.spawn("}", obj.gridPos.sub(0, 0));
+		}
+	});
 
-  player.collides("good-react", (m) => {
-    destroy(m);
-    camShake(25);
-    growSound.play();
-    scoreLabel.value++;
-    scoreLabel.text = scoreLabel.value;
-    player.biggify(6);
-  });
+	player.collides("good-react", (m) => {
+		destroy(m);
+		camShake(25);
+		growSound.play();
+		scoreLabel.value++;
+		scoreLabel.text = scoreLabel.value;
+		player.biggify(6);
+	});
 
-  player.collides("codaisseur-logo", (c) => {
-    destroy(c);
-    pointSound.play();
-    scoreLabel.value++;
-    scoreLabel.text = scoreLabel.value;
-  });
+	player.collides("codaisseur-logo", (c) => {
+		destroy(c);
+		pointSound.play();
+		scoreLabel.value++;
+		scoreLabel.text = scoreLabel.value;
+	});
 
-  action("dangerous", (d) => {
-    d.move(-ENEMY_SPEED, 0);
-  });
+	action("dangerous", (d) => {
+		d.move(-ENEMY_SPEED, 0);
+	});
 
-  player.collides("dangerous", (d) => {
-    if (isJumping || player.isBig()) {
-      stampSound.play();
-      camShake(20);
-      scoreLabel.value++;
-      scoreLabel.text = scoreLabel.value;
-      destroy(d);
-    } else {
-      painSound.play();
-      go("lose", { score: scoreLabel.value, levelNumber: levelLabel.value });
-      console.log("scoreLabel.value", scoreLabel.value);
-    }
-  });
+	player.collides("dangerous", (d) => {
+		if (isJumping || player.isBig()) {
+			stampSound.play();
+			camShake(20);
+			scoreLabel.value++;
+			scoreLabel.text = scoreLabel.value;
+			destroy(d);
+		} else {
+			painSound.play();
+			go("lose", { score: scoreLabel.value, levelNumber: levelLabel.value });
+			console.log("scoreLabel.value", scoreLabel.value);
+		}
+	});
 
-  player.action(() => {
-    camPos(player.pos);
-    if (player.pos.y >= FALL_DEATH) {
-      painSound.play();
-      go("lose", { score: scoreLabel.value, levelNumber: levelLabel.value });
-    }
-  });
+	player.action(() => {
+		camPos(player.pos);
+		if (player.pos.y >= FALL_DEATH) {
+			painSound.play();
+			go("lose", { score: scoreLabel.value, levelNumber: levelLabel.value });
+		}
+	});
 
-  keyDown("left", () => {
-    player.move(-MOVE_SPEED, 0);
-  });
+	keyDown("left", () => {
+		player.move(-MOVE_SPEED, 0);
+	});
 
-  keyDown("right", () => {
-    player.move(MOVE_SPEED, 0);
-  });
+	keyDown("right", () => {
+		player.move(MOVE_SPEED, 0);
+	});
 
-  player.action(() => {
-    if (player.grounded()) {
-      isJumping = false;
-    }
-  });
+	player.action(() => {
+		if (player.grounded()) {
+			isJumping = false;
+		}
+	});
 
-  keyPress("space", () => {
-    if (player.grounded()) {
-      jumpRetro.play();
-      isJumping = true;
-      player.jump(CURRENT_JUMP_FORCE);
-    }
-  });
+	keyPress("space", () => {
+		if (player.grounded()) {
+			jumpRetro.play();
+			isJumping = true;
+			player.jump(CURRENT_JUMP_FORCE);
+		}
+	});
 });
 
 scene("lose", ({ score, levelNumber }) => {
@@ -434,7 +434,9 @@ function startGame() {
   start("game", { level: 0, score: 0, levelNumber: 1 });
 }
 function restartGame() {
-  go("game", { level: 0, score: 0, levelNumber: 1 });
+	const form = document.getElementById("myForm");
+	form.remove();
+	go("game", { level: 0, score: 0, levelNumber: 1 });
 }
 
 function quitGame() {
