@@ -111,10 +111,10 @@ scene("game", ({ level, score, levelNumber }) => {
 			"   =      =      =  =   =     =  =$    =  =$     =$      =      =    =  =   =                      ",
 			"  =*      =      =  =    =   =    =    =   =      =      =      =    =  =   =                      ",
 			"  =       =      =  =    =   ======    =    ==     ==    =%=*   =    =  ====                       ",
-			"  =       =      =  =    =  =      =   =      =      =   =      =  z =  =  =       %                ",
+			"  =       =      =  =    =  =      =   =      =      =   =      =zzzz=  =  =       %                ",
 			"   = ^    =      =  =   =   =      =   =       =      =  =      =    =  =   =          p           ",
 			"   ==      =  z =   =  ==  =        =  =  =   =   =  =   =       =  =   =   =                      ",
-			"     ===    ====    ====   =        =  =   ===     ===   =====    ==    =    =  ===========*        ",
+			"     ===    ====    ====   =        =  =   ===     ===   =====    ==    =    =  ===========%        ",
 			"                                                                                                   ",
 			"                                                                                                   ",
 			"                                               ==== == == == == == == == == ====          ====      ",
@@ -434,6 +434,8 @@ function startGame() {
 	start("game", { level: 0, score: 0, levelNumber: 1 });
 }
 function restartGame() {
+	const form = document.getElementById("myForm");
+	form.remove();
 	go("game", { level: 0, score: 0, levelNumber: 1 });
 }
 
