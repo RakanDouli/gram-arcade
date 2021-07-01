@@ -6,11 +6,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      media="screen"
+      href="https://fontlibrary.org//face/minecraftia"
+      type="text/css"
+    />
   </head>
-  <body>
-    <h1>Home Page</h1>
-    <a href="./Supermat/SuperMat.html">Super Mat</a> <br />
-    <a href="./WonderKarla/WonderKarla.html">Super Mat</a>
+
+  <body class="animate" id="body">
+    <section class="logo">
+      <img src="./GRAM-ARCADE (2).png" alt="" />
+    </section>
+    <section class="games">
+      <div class="game">
+        <div class="karla-image">
+          <img class="headbg" src="./k1.png" alt="" />
+          <img class="head" src="./k2.png" alt="" />
+          <img class="kmouth" src="./k3.png" alt="" />
+        </div>
+        <div class="link">
+          <a href="/WonderKarla/WonderKarla.html">
+            <i class="fas fa-gamepad"></i>Wonder Karla</a
+          >
+        </div>
+      </div>
+      <div class="game">
+        <div class="mat-image">
+          <img class="head" src="./m1.png" alt="" />
+          <img class="mouth" src="./m2.png" alt="" />
+        </div>
+        <div class="link">
+          <a href="/Supermat/SuperMat.html">
+            <i class="fas fa-gamepad"></i>Super Mat</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <svg id="svgOne" xmlns="http://www.w3.org/2000/svg"></svg>
 
     <script src="./app.js"></script>
   </body>

@@ -1,0 +1,15 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "MinecraftiaRegular";
+}
+canvas {
+  margin-top: 3rem;
+  width: 70%;
+  height: 80%;
+  background-color: lightblue;
+}
+/* background-image: url("https://i.pinimg.com/originals/4a/49/71/4a4971fff8827531a7aa4b13218cd6bb.jpg"); */
+/* background-image: url("https://secure.meetupstatic.com/photos/event/e/3/6/7/600_473938215.jpeg"); */
+/* background-image: url("https://d33wubrfki0l68.cloudfront.net/d66b58156221d1d1f182b17e982d8d3272718b33/bae46/assets/humaans/become-a-dev.png"); */
