@@ -44,7 +44,9 @@ kaboom({
 	WONDER KARLA <a href="https://imgbb.com/%22%3E<img src="https://i.ibb.co/m53MVbh/Wonder-Karla.png" alt="Wonder-Karla" border="0"></a>
   	HTML LOGO <a href="https://imgbb.com/%22%3E<img src="https://i.ibb.co/hWp15d8/HTML5-Badge-svg.png" alt="HTML5-Badge-svg" border="0"></a>
   	CSS LOGO <a href="https://imgbb.com/%22%3E<img src="https://i.ibb.co/wWwCrCS/CC3-Badge.png" alt="CC3-Badge" border="0"></a>
-  	DISCORD LOGO <a href="https://imgbb.com/"><img src="https://i.ibb.co/1d9pK3d/discord-logo.png" alt="discord-logo" border="0"></a>*/
+  	DISCORD LOGO <a href="https://imgbb.com/"><img src="https://i.ibb.co/1d9pK3d/discord-logo.png" alt="discord-logo" border="0"></a>
+	POSTSQL <a href="https://ibb.co/GRw7rbj"><img src="https://i.ibb.co/zZcst0w/1200px-Postgresql-elephant-svg.png" alt="1200px-Postgresql-elephant-svg" border="0"></a> 
+	BLACK DISCORD <a href="https://imgbb.com/"><img src="https://i.ibb.co/nnCQyFc/bxl-discord-1325051932754699868.png" alt="bxl-discord-1325051932754699868" border="0"></a> */
 }
 
 const MOVE_SPEED = 120;
@@ -71,14 +73,15 @@ loadSprite("DB-pipe", "https://i.ibb.co/FBcCH7F/database-logo.png");
 loadSprite("html-block", "https://i.ibb.co/hWp15d8/HTML5-Badge-svg.png");
 loadSprite("css-block", "https://i.ibb.co/wWwCrCS/CC3-Badge.png");
 loadSprite("surprise", "https://i.ibb.co/1d9pK3d/discord-logo.png");
+loadSprite(
+	"elephantsql",
+	"https://i.ibb.co/zZcst0w/1200px-Postgresql-elephant-svg.png"
+);
 
-// loadRoot("./sounds/");
-// loadSound("pointSound", "pointSound.mp3");
-
-loadRoot("https://i.imgur.com/");
-loadSprite("brick", "pogC9x5.png");
-loadSprite("unboxed", "bdrLpi6.png");
-loadSprite("blue-steel", "gqVoI2b.png");
+loadSprite(
+	"unboxed",
+	"https://i.ibb.co/nnCQyFc/bxl-discord-1325051932754699868.png"
+);
 
 const actionRockAudio = new Audio("sounds/actionRockAudio.mp3");
 const hero911Audio = new Audio("sounds/hero911Audio.mp3");
@@ -94,60 +97,61 @@ const painSound = new Audio("sounds/painSound.mp3");
 const monsterGrowl = new Audio("sounds/monsterGrowl.mp3");
 const bounce = new Audio("sounds/bounceSound.mp3");
 
+const audios = [funAudio, actionRockAudio, hero911Audio];
+
 scene("game", ({ level, score, levelNumber }) => {
 	layers(["bg", "obj", "ui"], "obj");
 
 	const maps = [
 		[
-			"                                                                                            ",
-			"                                                                                            ",
-			"                                                                                            ",
-			"  *                                                                                        ",
-			"              %       *%                      *      %                   %                       ",
-			"      p                                                                                        ",
-			"             ^                  ^                                                             ",
+			"                                                                                                   ",
+			"                                                                                                   ",
+			"                                                                                                   ",
+			"                                                                                                  ",
+			"              %       *%                      *      %                   %                         ",
+			"                                                                                                   ",
+			"             ^                  ^                                                                  ",
 			"     ===    ====    ====       ==      =   ===$   ===    ==%*   =    =  ===                        ",
 			"   ===     ==  ==   =  ==     =  =        =$  =  =$  =   =      =    =  =  =                       ",
 			"   =      ==    ==  =   =     =  =$    =  =$     =$      =      =    =  =   =                      ",
-			"  =*      =      =  =    =   =    =    =   =      =      =      =    =  =   =                      ",
-			"  =       =      =  =    =   ======    =    ==     ==    =%=*   =    =  ====                       ",
-			"  =       =      =  =    =  =      =   =      =      =   =      =zzzz=  =  =       %                ",
+			"  =*      =      =  =    =   =    =    =   =      =      =      =z zz=  =   =                      ",
+			"  =       =      =  =    =   ======    =    ==     ==    =%=*   =z zz=  ====                       ",
+			"  =       =      =  =    =  =      =   =      =      =   =      =z zz=  =  =       %               ",
 			"   = ^    =      =  =   =   =      =   =       =      =  =      =    =  =   =          p           ",
-			"   ==      =    =   =  ==  =        =  =  =   =   =  =   =       =  =   =   =                      ",
-			"     ===    ====    ====   =        =  =   ===     ===   =====    ==    =    =  ===========%        ",
+			"   ==      =    =   =  ==  =        =  =  =   =   =  =   = $     =  =   =   =                      ",
+			"     ===    ====    ====   =        =  =   ===     ===   =====    ==    =    =  ===========%       ",
 			"                                                                                                   ",
 			"                                                                                                   ",
 			"                                              ==== == == == == == == == == ====          ====      ",
 		],
 		[
-			"                                 ",
-			"                                      ",
-			"                    ^                 ",
-			"                  hhhh                 ",
-			"                h                     ",
-			"     %                                ",
-			"         h*h%h                *            ",
-			"   p                             p       ",
-			"                   ^   ^                ",
-			"hhhhhhhhh      hhhhhhhhhh   hhhhhhhh",
-			"         hhhh                         ",
+			"                                                                       ",
+			"                                                                       ",
+			"                    ^                                                  ",
+			"                  hhhh                                             p   ",
+			"                h                                                z     ",
+			"     %                                                          hhhhh  ",
+			"         h*h%h                *                  hh  hh     z          ",
+			"                                        $                  hhhh        ",
+			"                   ^   ^                h     hh^ z ^ ^ hh             ",
+			"hhhhhhhhh      hhhhhhhhhh   hhhhhhhh   hhhhh   hhhhhhhhhh              ",
+			"         hhhh                                                          ",
 		],
 		[
 			"c                                         c",
-			"c                         %%%%*%          c",
+			"c                         x%%%*x          c",
 			"c                                         c",
-			"c                %%%%%%                   c",
+			"c                x%%%%x                   c",
 			"c                                         c",
-			"c        %%%%%*              x x          c",
+			"c        %xx%x*              x x          c",
 			"c                          x x x          c",
-			"c    p                    x x x x  x  p   c",
+			"c                         x x x x  x  p   c",
 			"c               z   z  x x x x x  x       c",
 			"ccccccccccccccccccccccccccccccccccccccccccc",
 		],
 	];
 
-	const audios = [funAudio, actionRockAudio, hero911Audio];
-	// const audiosPause = [funAudio, actionRockAudio, hero911Audio];
+	// const audios = [funAudio, actionRockAudio, hero911Audio];
 
 	level > 0 && levelNumber <= audios.length && audios[level - 1].pause();
 	levelNumber <= audios.length && audios[level].play();
@@ -164,10 +168,9 @@ scene("game", ({ level, score, levelNumber }) => {
 		$: [sprite("codaisseur-logo"), solid(), scale(0.04), "codaisseur-logo"],
 		"%": [sprite("surprise"), solid(), "CD-surprise", scale(0.04)],
 		"*": [sprite("surprise"), solid(), "react-surprise", scale(0.04)],
-		"}": [sprite("unboxed"), solid()],
-
+		"}": [sprite("unboxed"), scale(0.04), solid()],
+		x: [sprite("elephantsql"), solid(), scale(0.03)],
 		p: [sprite("DB-pipe"), solid(), scale(0.05), "DB-pipe"],
-		x: [sprite("blue-steel"), solid(), scale(0.5)],
 	};
 
 	const gameLevel = addLevel(maps[level], levelCfg);
@@ -268,6 +271,7 @@ scene("game", ({ level, score, levelNumber }) => {
 
 	player.collides("DB-pipe", () => {
 		keyPress("down", () => {
+			cheekyAudio.pause();
 			respawnSound.play();
 			levelLabel.value++;
 			levelLabel.text = levelLabel.value;
@@ -373,9 +377,6 @@ scene("lose", ({ score, levelNumber }) => {
 		origin("center"),
 		pos(width() / 2, height() / 2 - 50),
 	]);
-	keyPress("space", () => {
-		go("game", { level: 0, score: 0, levelNumber: 1 });
-	});
 
 	const canvas = document.getElementById("game-canvas");
 	console.log(canvas);
@@ -434,9 +435,13 @@ function startGame() {
 	start("game", { level: 0, score: 0, levelNumber: 1 });
 }
 function restartGame() {
+	audios[0].pause();
+	audios[1].pause();
+	audios[2].pause();
+	cheekyAudio.pause();
 	go("game", { level: 0, score: 0, levelNumber: 1 });
 	const form = document.getElementById("myForm");
-	form.remove();
+	form && form.remove();
 }
 
 function quitGame() {
