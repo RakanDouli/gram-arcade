@@ -242,6 +242,8 @@ const startHandler = () => {
       supermatBottomSpace -= 5;
       supermat.style.bottom = supermatBottomSpace + "px";
       if (supermatBottomSpace <= 0) {
+        const audio = new Audio("no.mp3");
+        audio.play();
         gameOver();
       }
       progClasses.forEach((pclass) => {
@@ -253,6 +255,8 @@ const startHandler = () => {
           !isJumping
         ) {
           // console.log("landed");
+          const audio = new Audio("jumpsoundeffect.mp3");
+          audio.play();
           startPoint = supermatBottomSpace;
           jump();
         }
@@ -266,6 +270,8 @@ const startHandler = () => {
           !isJumping
         ) {
           // console.log("got a mate");
+          const audio = new Audio("sip.mp3");
+          audio.play();
           startPoint = supermatBottomSpace + 200;
           jump();
         }
@@ -281,6 +287,8 @@ const startHandler = () => {
           // console.log("stuck in a meeting");
           startPoint = supermatBottomSpace - 150;
           score -= 1;
+          const audio = new Audio("shit.mp3");
+          audio.play();
           jump();
         }
       });
