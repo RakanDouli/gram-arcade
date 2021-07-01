@@ -30,6 +30,7 @@ const FALL_DEATH = 400;
 const ENEMY_SPEED = 20;
 
 loadSprite("WONDER KARLA", "https://i.ibb.co/m53MVbh/Wonder-Karla.png");
+
 loadSprite(
 	"evil-react",
 	"https://i.ibb.co/tmMjn9S/1-JSFjofdj-IH5-RDVf-q-OODGw.png"
@@ -44,12 +45,29 @@ loadSprite("html-block", "https://i.ibb.co/hWp15d8/HTML5-Badge-svg.png");
 loadSprite("css-block", "https://i.ibb.co/wWwCrCS/CC3-Badge.png");
 loadSprite("surprise", "https://i.ibb.co/1d9pK3d/discord-logo.png");
 
+// loadRoot("./sounds/");
+// loadSound("pointSound", "pointSound.mp3");
+
 loadRoot("https://i.imgur.com/");
 loadSprite("brick", "pogC9x5.png");
 loadSprite("unboxed", "bdrLpi6.png");
 loadSprite("blue-steel", "gqVoI2b.png");
 
-https: scene("game", ({ level, score, levelNumber }) => {
+const actionRockAudio = new Audio("sounds/actionRockAudio.mp3");
+const hero911Audio = new Audio("sounds/hero911Audio.mp3");
+const cheekyAudio = new Audio("sounds/cheekyAudio.mp3");
+const funAudio = new Audio("sounds/funAudio.mp3");
+
+const pointSound = new Audio("sounds/pointSound.mp3");
+const growSound = new Audio("sounds/growSound.mp3");
+const jumpRetro = new Audio("sounds/jumpRetro.mp3");
+const respawnSound = new Audio("sounds/respawnSound.mp3");
+const stampSound = new Audio("sounds/stampSound.mp3");
+const painSound = new Audio("sounds/painSound.mp3");
+const monsterGrowl = new Audio("sounds/monsterGrowl.mp3");
+const bounce = new Audio("sounds/bounceSound.mp3");
+
+scene("game", ({ level, score, levelNumber }) => {
 	layers(["bg", "obj", "ui"], "obj");
 
 	const maps = [
@@ -57,19 +75,19 @@ https: scene("game", ({ level, score, levelNumber }) => {
 			"                                                                                            ",
 			"                                                                                            ",
 			"                                                                                            ",
-			"                                                                                            ",
+			"  *                                                                                        ",
 			"              %       *%                      *      %                   %                       ",
 			"      p                                                                                        ",
 			"             ^                  ^                                                             ",
 			"     ===    ====    ====       ==      =   ===$   ===    ==%*   =    =  ===                        ",
 			"   ==      =    =   =  ==     =  =        =$  =  =$  =   =      =    =  =  =                       ",
 			"   =      =      =  =   =     =  =$    =  =$     =$      =      =    =  =   =                      ",
-			"  =       =      =  =    =   =    =    =   =      =      =      =    =  =   =                      ",
+			"  =*      =      =  =    =   =    =    =   =      =      =      =    =  =   =                      ",
 			"  =       =      =  =    =   ======    =    ==     ==    =*=%   =    =  ====                       ",
 			"  =       =      =  =    =  =      =   =      =      =   =      =  z =  =  =                       ",
 			"   = ^    =      =  =   =   =      =   =       =      =  =      =    =  =   =     %    p           ",
 			"   ==      =  z =   =  ==  =        =  =  =   =   =  =   =       =  =   =   =                      ",
-			"     ===    ====    ====   =        =  =   ===     ===   =====    ==    =    =  ========           ",
+			"     ===    ====    ====   =        =  =   ===     ===   =====    ==    =    =  =========== ",
 		],
 		[
 			"                                 ",
@@ -79,24 +97,30 @@ https: scene("game", ({ level, score, levelNumber }) => {
 			"                h                     ",
 			"     %                                ",
 			"         h*h%h                             ",
-			"   p                       *     p       ",
-			"                   ^   ^            ",
-			"hhhhhhhhh      hhhhhhhhhh   hhhhh",
+			"   p                         *   p       ",
+			"                   ^   ^                ",
+			"hhhhhhhhh      hhhhhhhhhh   hhhhhhhh",
 			"         hhhh                         ",
 		],
 		[
-			"c                                        c",
-			"c                         %%%%%%         c",
-			"c                                        c",
-			"c                %%%%%%                  c",
-			"c                                        c",
-			"c        %%%%%*              x x         c",
-			"c                          x x x         c",
-			"c    p                    x x x x  x  p  c",
-			"c               z   z  x x x x x  x      c",
-			"cccccccccccccccccccccccccccccccccccccccccc",
+			"c                                         c",
+			"c                         %%%%*%          c",
+			"c                                         c",
+			"c                %%%%%%                   c",
+			"c                                         c",
+			"c        %%%%%*              x x          c",
+			"c                          x x x          c",
+			"c    p                    x x x x  x  p   c",
+			"c               z   z  x x x x x  x       c",
+			"ccccccccccccccccccccccccccccccccccccccccccc",
 		],
 	];
+
+	const audios = [funAudio, actionRockAudio, hero911Audio];
+	// const audiosPause = [funAudio, actionRockAudio, hero911Audio];
+
+	level > 0 && levelNumber <= audios.length && audios[level - 1].pause();
+	levelNumber <= audios.length && audios[level].play();
 
 	const levelCfg = {
 		width: 20,
@@ -156,12 +180,19 @@ https: scene("game", ({ level, score, levelNumber }) => {
 				return isBig;
 			},
 			smallify() {
+				cheekyAudio.pause();
+				levelNumber > 3 ? audios[2].play() : audios[level].play();
+
 				this.scale = vec2(0.05);
 				CURRENT_JUMP_FORCE = JUMP_FORCE;
 				timer = 0;
 				isBig = false;
 			},
 			biggify(time) {
+				levelNumber > 3 ? audios[2].pause() : audios[level].pause();
+				audios[level].pause();
+				cheekyAudio.play();
+
 				this.scale = vec2(0.1);
 				timer = time;
 				isBig = true;
@@ -185,7 +216,7 @@ https: scene("game", ({ level, score, levelNumber }) => {
 	});
 
 	function respawn_evil() {
-		let new_pos = rand(110, width());
+		let new_pos = rand(130, width());
 		new_pos = Math.floor(new_pos);
 
 		randomEvil = add([
@@ -194,18 +225,20 @@ https: scene("game", ({ level, score, levelNumber }) => {
 			solid(),
 			pos(new_pos, 0),
 			body(),
-			scale(0.05),
+			scale(0.03),
 		]);
 	}
 
 	const loopTime = 10 / levelNumber;
 	loop(loopTime, () => {
 		console.log(loopTime);
+		monsterGrowl.play();
 		respawn_evil();
 	});
 
 	player.collides("DB-pipe", () => {
 		keyPress("down", () => {
+			respawnSound.play();
 			levelLabel.value++;
 			levelLabel.text = levelLabel.value;
 			go("game", {
@@ -221,6 +254,7 @@ https: scene("game", ({ level, score, levelNumber }) => {
 	});
 
 	player.on("headbump", (obj) => {
+		bounce.play();
 		if (obj.is("CD-surprise")) {
 			gameLevel.spawn("$", obj.gridPos.sub(0, 1));
 			destroy(obj);
@@ -236,6 +270,7 @@ https: scene("game", ({ level, score, levelNumber }) => {
 	player.collides("good-react", (m) => {
 		destroy(m);
 		camShake(25);
+		growSound.play();
 		scoreLabel.value++;
 		scoreLabel.text = scoreLabel.value;
 		player.biggify(6);
@@ -243,6 +278,7 @@ https: scene("game", ({ level, score, levelNumber }) => {
 
 	player.collides("codaisseur-logo", (c) => {
 		destroy(c);
+		pointSound.play();
 		scoreLabel.value++;
 		scoreLabel.text = scoreLabel.value;
 	});
@@ -252,13 +288,15 @@ https: scene("game", ({ level, score, levelNumber }) => {
 	});
 
 	player.collides("dangerous", (d) => {
-		if (isJumping) {
+		if (isJumping || player.isBig()) {
+			stampSound.play();
 			camShake(20);
 			scoreLabel.value++;
 			scoreLabel.text = scoreLabel.value;
 			destroy(d);
 		} else {
-			go("lose", { score: scoreLabel.value });
+			painSound.play();
+			go("lose", { score: scoreLabel.value, levelNumber: levelLabel.value });
 			console.log("scoreLabel.value", scoreLabel.value);
 		}
 	});
@@ -266,7 +304,8 @@ https: scene("game", ({ level, score, levelNumber }) => {
 	player.action(() => {
 		camPos(player.pos);
 		if (player.pos.y >= FALL_DEATH) {
-			go("lose", { score: scoreLabel.value });
+			painSound.play();
+			go("lose", { score: scoreLabel.value, levelNumber: levelLabel.value });
 		}
 	});
 
@@ -286,14 +325,24 @@ https: scene("game", ({ level, score, levelNumber }) => {
 
 	keyPress("space", () => {
 		if (player.grounded()) {
+			jumpRetro.play();
 			isJumping = true;
 			player.jump(CURRENT_JUMP_FORCE);
 		}
 	});
 });
 
-scene("lose", ({ score }) => {
-	add([text(score, 32), origin("center"), pos(width() / 2, height() / 2)]);
+scene("lose", ({ score, levelNumber }) => {
+	add([
+		text(`Score ${score}`, 32),
+		origin("center"),
+		pos(width() / 2, height() / 2),
+	]);
+	add([
+		text(`Level ${levelNumber}`, 32),
+		origin("center"),
+		pos(width() / 2, height() / 2 - 50),
+	]);
 	keyPress("space", () => {
 		go("game", { level: 0, score: 0, levelNumber: 1 });
 	});
@@ -304,7 +353,6 @@ document.addEventListener("DOMContentLoaded", function () {
 	document
 		.getElementById("restart-button")
 		.addEventListener("click", restartGame);
-	document.getElementById("quit-button").addEventListener("click", quitGame);
 });
 
 function startGame() {
