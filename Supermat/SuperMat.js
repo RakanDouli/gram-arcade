@@ -1,20 +1,25 @@
-// const axios = require("axios");
-
 window.onload = function () {
-  const start = document.querySelector(".start");
-  const tryButton = document.createElement("BUTTON");
-  tryButton.setAttribute("id", "goButton");
-  const buttonName = document.createTextNode("Start Game");
-  tryButton.appendChild(buttonName);
-  start.appendChild(tryButton);
-  tryButton.onclick = () => {
+  const restarting = sessionStorage.getItem("restarting");
+  if (restarting) {
+    sessionStorage.removeItem("restarting");
     startHandler();
-  };
-};
+  } else {
+    const start = document.querySelector(".start");
 
-function restart() {
-  startHandler();
-}
+    start.addEventListener(
+      "click",
+      () => {
+        startHandler();
+      },
+      { once: true }
+    );
+  }
+  const restart = document.querySelector(".restart");
+  restart.addEventListener("click", () => {
+    sessionStorage.setItem("restarting", "true");
+    location.reload();
+  });
+};
 
 let scoreboard = [];
 
@@ -43,10 +48,6 @@ setTimeout(() => {
   scoreList.append(...nodes);
 }, 500);
 const startHandler = () => {
-  // const newstart = document.querySelector(".start");
-  // const startingbutton = document.getElementById("gobutton")
-  // newstart.removeChild("gobutton");
-
   const grid = document.querySelector(".grid");
 
   const supermat = document.createElement("div");
@@ -71,9 +72,6 @@ const startHandler = () => {
   let leftTimerId;
   let rightTimerId;
   let score = 0;
-
-  // const livescore = document.getElementById("livescore");
-  // // const playerscore = document.createElement("p");
 
   function createSupermat() {
     grid.appendChild(supermat);
@@ -108,7 +106,7 @@ const startHandler = () => {
           'url("./Prog_logos/12.png")',
           'url("./Prog_logos/13.png")',
         ];
-        // const progClass = document.querySelector("progClass");
+
         const background = images[Math.floor(Math.random() * images.length)];
         visual.style.backgroundImage = background;
       }
@@ -264,8 +262,8 @@ const startHandler = () => {
           supermatBottomSpace >= m.bottom &&
           supermatBottomSpace <= m.bottom + 35 &&
           supermatLeftSpace + 70 >= m.left &&
-          supermatLeftSpace <= m.left + 35
-          //   !isJumping
+          supermatLeftSpace <= m.left + 35 &&
+          !isJumping
         ) {
           // console.log("got a mate");
           startPoint = supermatBottomSpace + 200;
@@ -334,9 +332,6 @@ const startHandler = () => {
       }
     };
     document.getElementById("myForm").appendChild(submitButton);
-    // grid.appendChild(InputName);
-
-    // grid.innerHTML = score;
 
     isGameOver = true;
     clearInterval(upTimerId);
@@ -400,38 +395,6 @@ const startHandler = () => {
     clearInterval(leftTimerId);
   }
 
-  let node = document.getElementById("goButton");
-  if (node.parentNode) {
-    node.parentNode.removeChild(node);
-  }
-  const initialState = document.querySelector(".start");
-
-  const quitButton = document.createElement("BUTTON");
-  quitButton.setAttribute("id", "quit");
-  const quitButtonName = document.createTextNode("Quit Game");
-  quitButton.appendChild(quitButtonName);
-  initialState.appendChild(quitButton);
-
-  quitButton.onclick = () => {
-    location.reload();
-  };
-
-  // const restartButton = document.createElement("BUTTON");
-  // restartButton.setAttribute("id", "restart");
-  // const bName = document.createTextNode("Restart The Game");
-  // restartButton.appendChild(bName);
-  // initialState.appendChild(restartButton);
-
-  // restartButton.onclick = () => {
-  //   console.log("you clicked me?");
-
-  //   while (grid.firstChild) {
-  //     grid.removeChild(grid.firstChild);
-  //   }
-  //   grid.innerHTML = "";
-
-  //   score = 0;
-  // };
   function start() {
     if (!isGameOver) {
       createProgClass();
