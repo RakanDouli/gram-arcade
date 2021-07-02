@@ -416,7 +416,7 @@ const startHandler = () => {
       setInterval(moveMeeting, 35);
       setInterval(moveProgClasses, 35);
       jump();
-      document.getElementById("yourscore").innerHTML = "Your Score";
+      document.getElementById("yourscore").innerHTML = "Your Score: ";
       createLivescore();
       setInterval(createLivescore, 0.1);
       document.addEventListener("keydown", control);

@@ -5,25 +5,96 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SuperMat</title>
-    <link rel="stylesheet" href="SuperMat.css"></link>
+    <link rel="stylesheet" href="SuperMat.css" />
+
+    <link
+      rel="stylesheet"
+      media="screen"
+      href="https://fontlibrary.org//face/minecraftia"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <script src="SuperMat.js" charset="UTF-8"></script>
   </head>
+
   <body>
-      <button class="start">Start Game</button>
-      <button class="restart">Restart Game</button>
-      <button class="quit"><a href="../index.html">Quit</a></button>
-      
+    <a href="../index.html">
+      <section class="logo">
+        <img src="../GRAM-ARCADE (2).png" alt="" />
+      </section>
+    </a>
+    <div class="window">
+      <div class="btns">
+        <button class="start">Start Game</button>
+        <button class="restart">
+          <i class="fas fa-undo-alt"></i> Restart Game
+        </button>
+        <button class="quit"><a href="../index.html">Quit</a></button>
+      </div>
+
       <div class="currentPlayerScore">
-      <h3 id="yourscore"></h3>
-      <p id="livescore"></p>
+        <h3 id="yourscore"></h3>
+        <p id="livescore"></p>
+      </div>
+      <div class="grid"></div>
+      <div class="text">
+        <div class="info">
+          <h3>Super Mat:</h3>
+          <p>
+            Is typically in the fictional Codaisseur Kingdom with our amazing
+            teacher Matias as the player character.
+          </p>
+          <h3>Description</h3>
+          <p>
+            In SuperMat game, the aim is to guide our cool teacher SuperMat up a
+            never-ending series of lectures without falling. Mat can get a a
+            high jump boost when he drinks mate his favorite drink. There are
+            also Meeting obstacles (Google meet logo) that SuperMat must avoid.
+            There is no definitive end to the game, but the end for each
+            gameplay session happens when SuperMat falls to the bottom.
+          </p>
+          <h3>Game Goal:</h3>
+          <p>
+            The main aim of this game is to get as many points as possible by
+            clearing lectures (programming stacks). During Super Mat’s flight,
+            he can pick up his favourite drink, mate, which gives him a flight
+            boost. Meetings are SuperMate’s kryptonite. If he lands at a meeting
+            (Google Meet logo) his flight ability gets nerfed and he loses
+            points.
+          </p>
+          <h3>Contorls</h3>
+          <p>
+            The controls are; left and right arrows to fly around and up-arrow
+            to stabilize SuperMat.
+          </p>
+        </div>
+        <div class="scores">
+          <h3>Scoreboard:</h3>
+          <ol id="scoreboard"></ol>
+        </div>
+      </div>
     </div>
-<div class="grid">
-      
-</div>
-<div>
-  <h3>Scoreboard:</h3>
-<ol id="scoreboard">
-</ol>
-</div>
+    <h1 class="warning">This game works only on computers</h1>
+    <div class="developedby">
+      <h3>Developed By:</h3>
+      <a class="name-link" href="https://github.com/Anjad-Qusaibaty">
+        <i class="fab fa-github"></i> Anjad Qusaibaty</a
+      >
+      <a class="name-link" href="https://github.com/GaurangiM">
+        <i class="fab fa-github"></i> Gaurangi Mane</a
+      >
+      <a class="name-link" href="https://github.com/Martijncvv">
+        <i class="fab fa-github"></i> Martijn van Veen</a
+      >
+      <a class="name-link" href="https://github.com/Rairakzak">
+        <i class="fab fa-github"></i> Rakan Douli</a
+      >
+    </div>
   </body>
 </html>

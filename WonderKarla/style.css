@@ -3,13 +3,160 @@ body {
   flex-direction: column;
   align-items: center;
   font-family: "MinecraftiaRegular";
+  background-color: #09265c;
+}
+.warning {
+  display: none;
+  color: white;
+}
+@media only screen and (max-width: 992px) {
+  canvas,
+  .btns,
+  #game-buttons a,
+  .text,
+  .info,
+  .scores {
+    display: none;
+  }
+
+  .developedby {
+    flex-direction: column;
+  }
+  .warning {
+    display: block;
+    text-align: center;
+  }
+}
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2.5rem;
+  margin-bottom: 2rem;
+}
+.logo img {
+  width: 25rem;
+}
+#game-canvas {
+  position: relative;
 }
 canvas {
+  border: 3px solid rgb(210, 210, 210);
   margin-top: 3rem;
-  width: 70%;
+  width: 80%;
   height: 80%;
-  background-color: lightblue;
+  background-image: url("./imgs/Clouds_Background_With_Blue_Sky\ [Converted].png");
+  /* background-position: center; */
+  background-size: cover;
 }
 /* background-image: url("https://i.pinimg.com/originals/4a/49/71/4a4971fff8827531a7aa4b13218cd6bb.jpg"); */
 /* background-image: url("https://secure.meetupstatic.com/photos/event/e/3/6/7/600_473938215.jpeg"); */
 /* background-image: url("https://d33wubrfki0l68.cloudfront.net/d66b58156221d1d1f182b17e982d8d3272718b33/bae46/assets/humaans/become-a-dev.png"); */
+
+/* buttons */
+#game-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 40%;
+
+  margin-top: 2rem;
+  margin-bottom: -1rem;
+}
+.btns {
+  color: rgb(210, 210, 210);
+  background-color: transparent;
+  border: none;
+  font-size: 1.6rem;
+}
+
+.btns:active {
+  transform: scale(0.9);
+}
+.btns i {
+  color: rgb(210, 210, 210);
+  display: inline-block;
+  font-size: 1.2rem;
+}
+
+#game-buttons a {
+  color: rgb(210, 210, 210);
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+#game-buttons a:active {
+  transform: scale(0.9);
+}
+/* form */
+#myForm {
+  border: none;
+  position: absolute;
+  padding: 2rem;
+  top: 26rem;
+  left: -12rem;
+  width: 20rem;
+  border-radius: 5px;
+  color: rgb(210, 210, 210);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #09265cc4;
+}
+input:focus {
+  outline: none;
+}
+#myForm input {
+  background-color: #09265cc4;
+  border: rgb(210, 210, 210) 1px solid;
+  color: rgb(210, 210, 210);
+  padding: 0.4rem;
+  width: 80%;
+}
+#myForm button {
+  display: inline;
+  width: 5rem;
+  margin-top: 1rem;
+}
+/* text */
+.text {
+  color: rgb(210, 210, 210);
+  width: 80%;
+  display: flex;
+  justify-content: flex-start;
+  border: 2px solid rgb(210, 210, 210);
+  letter-spacing: 1px;
+}
+.info {
+  width: 70%;
+  padding: 3rem;
+}
+.scores {
+  width: 30%;
+  padding: 3rem;
+  border-left: 2px solid rgb(210, 210, 210);
+}
+/*  */
+
+.developedby {
+  position: relative;
+  z-index: 2;
+  color: rgb(210, 210, 210);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 4rem;
+}
+.developedby h3 {
+  letter-spacing: 1px;
+}
+.name-link {
+  color: rgb(210, 210, 210);
+  margin: 0 0.4rem;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 0.4rem;
+}
+.name-link:hover {
+  color: rebeccapurple;
+}
+/*  */

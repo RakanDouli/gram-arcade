@@ -1,7 +1,7 @@
 var svgns = "http://www.w3.org/2000/svg",
   rectPerRow = 20,
   size = window.innerWidth / rectPerRow,
-  rectPerColumn = 12,
+  rectPerColumn = 20,
   colorArray = ["#09265c", "#043077", "#0d3986"];
 for (var i = 0; i < rectPerRow * rectPerColumn; i++) {
   var x = size * (i % rectPerRow),

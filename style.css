@@ -11,7 +11,7 @@ html {
   justify-content: center;
   align-items: center;
   /* background-color: chartreuse; */
-  margin-top: 5.5rem;
+  margin-top: 2.5rem;
   margin-bottom: 2rem;
 }
 .logo img {
@@ -21,14 +21,19 @@ html {
   .logo img {
     width: 20rem;
   }
+  .game {
+    margin: 2rem 0;
+  }
 }
 .games {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
   width: 100%;
   height: 100%;
 }
+
 .game {
   width: 30rem;
   height: 30rem;
@@ -65,7 +70,7 @@ html {
   width: 100%;
   height: 100%;
 }
-.mat-image:hover .mouth {
+.link a:hover .mouth {
   bottom: 3.5rem;
 }
 .mat-image .mouth {
@@ -93,7 +98,7 @@ html {
   width: 100%;
   height: 100%;
 }
-.karla-image:hover .kmouth {
+.link a:hover .kmouth {
   top: 8.2rem;
 }
 .karla-image .kmouth {
@@ -105,13 +110,48 @@ html {
   width: 3.9rem;
 }
 
+/* text */
+.developedby {
+  position: relative;
+  z-index: 2;
+  color: rgb(210, 210, 210);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 4rem;
+}
+.developedby h3 {
+  letter-spacing: 1px;
+}
+.name-link {
+  color: rgb(210, 210, 210);
+  margin: 0 0.4rem;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 0.4rem;
+}
+.name-link:hover {
+  color: rebeccapurple;
+}
+
+/*  */
+.thanks {
+  margin-top: -0.4rem;
+  color: rgb(210, 210, 210);
+  font-size: 1rem;
+  text-align: center;
+}
+.thanks a {
+  color: rgb(210, 210, 210);
+}
+
 /* bg animation */
 #svgOne {
   position: absolute;
   z-index: -1;
   top: 0;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   opacity: 0.7;
 }
 rect {

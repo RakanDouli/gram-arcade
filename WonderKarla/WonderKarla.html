@@ -1,24 +1,101 @@
 <html>
-	<head>
-		<title>WonderKarla</title>
-		<link rel="stylesheet" href="./style.css" />
-	</head>
-	<body>
-		<nav></nav>
-		<div id="game-buttons">
-			<button id="start-button">Start</button>
-			<button id="restart-button">Restart</button>
-			<a href="../index.html" id="quit-button">Quit</a>
-		</div>
+  <head>
+    <title>WonderKarla</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      media="screen"
+      href="https://fontlibrary.org//face/minecraftia"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <a href="../index.html">
+      <section class="logo">
+        <img src="../GRAM-ARCADE (2).png" alt="" />
+      </section>
+    </a>
+    <div id="game-buttons">
+      <button class="btns" id="start-button">
+        <i class="fas fa-play"></i>
+        Start
+      </button>
+      <button class="btns" id="restart-button">
+        <i class="fas fa-undo-alt"></i> Restart
+      </button>
+      <a href="../index.html" id="quit-button">Quit</a>
+    </div>
 
-		<div id="game-canvas">
-			<script src="https://kaboomjs.com/lib/0.5.0/kaboom.js"></script>
-			<script src="WonderKarla.js"></script>
-		</div>
+    <div id="game-canvas">
+      <script src="https://kaboomjs.com/lib/0.5.0/kaboom.js"></script>
+      <script src="WonderKarla.js"></script>
+    </div>
 
-		<div>
-			<h3>Scoreboard:</h3>
-			<ol id="scoreboard"></ol>
-		</div>
-	</body>
+    <div class="text">
+      <div class="info">
+        <h3>The WonderKarla game:</h3>
+        <p>
+          Is typically in the fictional Codaisseur Kingdom with our amazing
+          teacher Karla as the player character.
+        </p>
+        <h3>Description:</h3>
+        <p>
+          As a platform game, the player runs and jumps across platforms and
+          atop enemies in coding themed levels. The game includes a multitude of
+          power-ups and items that give Karla special powers such as
+          size-changing into both giant and miniature sizes.
+        </p>
+        <h3>Game Goal:</h3>
+        <p>
+          The main aim of this game is to get as many points as possible by
+          collecting items, destroying enemies and beating levels. There are
+          various enemies WonderKarla should avoid; Red React and Evil Redux. If
+          she gets hit by an enemy, the game is over. However, she can jump on
+          enemies to destroy them and collect extra points. When WonderKarla
+          headbumps a Discord box, she could get different items; a Codaisseur
+          point card, which gives 1 score point, or a React Boost, which gives
+          her 1 point and superpowers for 6 seconds. The superpower gives
+          WonderKarla the ability to jump higher and destroy enemies with a
+          touch. At the end of the level, WonderKarla can enter the next stage
+          via the Database pipeline.
+        </p>
+        <p></p>
+        ** Caution: There is an Evil Redux rain during the game, which gets
+        stronger when proceeding from level to level. You can hear them spawn by
+        listening to their growl.
+        <h3>Controls</h3>
+        <p>
+          left and right arrow to walk, space to jump and down-arrow to enter a
+          Database pipeline.
+        </p>
+      </div>
+      <div class="scores">
+        <h3>Scoreboard:</h3>
+        <ol id="scoreboard"></ol>
+      </div>
+    </div>
+    <h2 class="warning">This game works only on computers</h2>
+    <div class="developedby">
+      <h3>Developed By:</h3>
+      <a class="name-link" href="https://github.com/Anjad-Qusaibaty">
+        <i class="fab fa-github"></i> Anjad Qusaibaty</a
+      >
+      <a class="name-link" href="https://github.com/GaurangiM">
+        <i class="fab fa-github"></i> Gaurangi Mane</a
+      >
+      <a class="name-link" href="https://github.com/Martijncvv">
+        <i class="fab fa-github"></i> Martijn van Veen</a
+      >
+      <a class="name-link" href="https://github.com/Rairakzak">
+        <i class="fab fa-github"></i> Rakan Douli</a
+      >
+    </div>
+  </body>
 </html>

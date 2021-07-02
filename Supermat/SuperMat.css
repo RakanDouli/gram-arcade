@@ -1,15 +1,62 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "MinecraftiaRegular";
+  background-color: #09265c;
+}
+/* manage screen width */
+.warning {
+  display: none;
+  color: white;
+}
+.window {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media only screen and (max-width: 992px) {
+  .window {
+    display: none;
+  }
+  .warning {
+    display: block;
+
+    text-align: center;
+  }
+  .developedby {
+    flex-direction: column;
+  }
+}
+
+/*  */
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: chartreuse; */
+  margin-top: 2.5rem;
+  margin-bottom: 2rem;
+}
+.logo img {
+  width: 25rem;
+}
 .grid {
   width: 500px;
   height: 700px;
+  border: 3px solid rgb(210, 210, 210);
+
   overflow-y: hidden;
   font-size: 20px;
   font-weight: bold;
   text-align: center;
-  background-image: url("./class_background.png");
-
+  background-image: url("./2.jpg");
+  /* background-position: center; */
+  background-size: cover;
   /* background-color: cadetblue; */
   background-size: 500px 700px;
-  border: 1px solid black;
+
   position: relative;
 }
 
@@ -48,24 +95,129 @@
   background-size: 25px 25px;
   position: absolute;
 }
-
-#livescore {
-  color: blue;
-  font-size: 18px;
-}
-#yourscore {
-  color: crimson;
+input:focus {
+  outline: none;
 }
 #myForm {
-  padding-top: 225px;
+  position: relative;
+  background-color: #09265cc4;
+  margin: 12rem 2rem 2rem 2rem;
+  padding: 2rem;
+  display: flex;
+  border-radius: 5px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#myForm input {
+  background-color: #09265cc4;
+  border: rgb(210, 210, 210) 1px solid;
+  color: rgb(210, 210, 210);
+  padding: 0.4rem;
+  width: 80%;
+}
+#myForm button {
+  display: inline;
+  width: 5rem;
+  margin-top: 1rem;
 }
 #msgToPlayer {
-  color: darkred;
-  background-color: white;
+  color: rgb(210, 210, 210);
+  font-size: 1rem;
 }
 @media only screen and (max-width: 1600px) {
   .grid {
     width: 500px;
     height: 600px;
   }
+}
+/* text */
+.text {
+  margin-top: 4rem;
+  color: rgb(210, 210, 210);
+  width: 80%;
+  display: flex;
+  justify-content: flex-start;
+  border: 2px solid rgb(210, 210, 210);
+  letter-spacing: 1px;
+}
+.info {
+  width: 70%;
+  padding: 3rem;
+}
+.scores {
+  width: 30%;
+  padding: 3rem;
+  border-left: 2px solid rgb(210, 210, 210);
+}
+/* logo */
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: chartreuse; */
+  margin-top: 2.5rem;
+  margin-bottom: 2rem;
+}
+.logo img {
+  width: 25rem;
+}
+.btns {
+  margin: 1rem;
+  display: flex;
+  width: 500px;
+  justify-content: space-between;
+}
+.btns button {
+  color: rgb(210, 210, 210);
+  background-color: transparent;
+  border: none;
+  font-size: 1.4rem;
+}
+.btns button:active {
+  transform: scale(0.9);
+}
+.btns button i {
+  color: rgb(210, 210, 210);
+  display: inline-block;
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+}
+.btns button a {
+  color: rgb(210, 210, 210);
+  text-decoration: none;
+}
+
+.currentPlayerScore {
+  display: flex;
+  align-items: center;
+  color: rgb(210, 210, 210);
+
+  top: 0;
+}
+.currentPlayerScore h3 {
+  margin-right: 0.6rem;
+}
+/*  */
+.developedby {
+  position: relative;
+  z-index: 2;
+  color: rgb(210, 210, 210);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 4rem;
+}
+.developedby h3 {
+  letter-spacing: 1px;
+}
+.name-link {
+  color: rgb(210, 210, 210);
+  margin: 0 0.4rem;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 0.4rem;
+}
+.name-link:hover {
+  color: rebeccapurple;
 }
