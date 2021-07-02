@@ -15,7 +15,7 @@ The group decided to build an arcade with two mini games where the main protagon
 
 ## Game 1: Super Mat
 
-![matias' avatar](./Supermat/Supermat_v3.png)
+![matias' avatar](./Supermat/Supermat_V3.png)
 
 ### Description
 
