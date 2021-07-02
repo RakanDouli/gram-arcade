@@ -17,23 +17,23 @@ The name of the arcade is **GRAM ARCADE**. GRAM comes from : **G**aurangi , **R*
 
 **You can access the game live on: [Link](https://gramarcade.netlify.app/)**
 
-## Game 1: Super Mat
+## Game 1: SuperMat
 
 ![matias' avatar](./Supermat/Supermat_V3.png)
 
 ### Description
 
-In SuperMat game, the aim is to guide our cool teacher/sensei Super Mat up a never-ending series of lectures without falling. Mat can get a a high jump boost when he drinks mate his favorite drink. There are also Meeting obstacles (Google meet logo) that SuperMat must avoid. There is no definitive end to the game, but the end for each game session happens when SuperMat falls to the bottom.
+In SuperMat game, the aim is to guide our cool teacher/sensei SuperMat up a never-ending series of lectures without falling. Mat can get a a high jump boost when he drinks mate his favorite drink. There are also Meeting obstacles (Google meet logo) that SuperMat must avoid. There is no definitive end to the game, but the end for each game session happens when SuperMat falls to the bottom.
 
 ### Game Goal
 
-The main aim of this game is to get as many points as possible by clearing lectures (programming stacks). During Super Mat’s flight, he can pick up his favorite drink, mate, which gives him a flight boost. Meetings are SuperMate’s kryptonite. If he lands at a meeting (Google Meet logo) his flight ability gets nerfed and he loses points.
+The main aim of this game is to get as many points as possible by clearing lectures (programming stacks). During SuperMat’s flight, he can pick up his favorite drink, mate, which gives him a flight boost. Meetings are SuperMate’s kryptonite. If he lands at a meeting (Google Meet logo) his flight ability gets nerfed and he loses points.
 
 ### Contorls
 
-Super Mat moves left and right with the left and right arrows, and the middle arrow helps stabilizing him in the middle.
+SuperMat moves left and right with the left and right arrows, and the middle arrow helps stabilizing him in the middle.
 
-## Game 2: Wonder Karla
+## Game 2: WonderKarla
 
 ![Karla's Avatar](./WonderKarla/Wonder_Karla.png)
 
@@ -57,7 +57,7 @@ left and right arrow to walk, space to jump and down-arrow to enter a Database p
 
 The inspiration for both games came from following the awesome teacher/developer Ania Kubów's YouTube channel titled [Code with Ania Kubów](https://www.youtube.com/channel/UC5DNytAJ6_FISueUfzZCVsw).
 
-- For the Super Mat game, we used Ania's video titled [Doodle Jump in JavaScript](https://youtu.be/YSEsSs3hB6A) as a reference.
-- For the Wonder Karla game, we used Ania's video titled [Code Mario in JavaScript with Kaboom.js!](https://youtu.be/2nucjefSr6I) as a reference.
+- For the SuperMat game, we used Ania's video titled [Doodle Jump in JavaScript](https://youtu.be/YSEsSs3hB6A) as a reference.
+- For the WonderKarla game, we used Ania's video titled [Code Mario in JavaScript with Kaboom.js!](https://youtu.be/2nucjefSr6I) as a reference.
 
 We highly recommend that you follow her YouTube channel if you are interested in coding and web development.

@@ -21,6 +21,10 @@ html {
   .logo img {
     width: 20rem;
   }
+  .developedby {
+    flex-direction: column;
+    margin-bottom: 4rem;
+  }
   .game {
     margin: 2rem 0;
   }
