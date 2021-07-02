@@ -12,6 +12,10 @@ Our group consisted of four people (in alphabetic order):
 - [Rakan Douli](https://github.com/Rairakzak).
 
 The group decided to build an arcade with two mini games where the main protagonists are our teachers [Karla Evelize](https://www.linkedin.com/in/karla-evelize/) and [Matias Garcia](https://www.linkedin.com/in/matias-garcia-79b6aa108/).
+The name of the arcade is **GRAM ARCADE**. GRAM comes from : **G**aurangi , **R**akan, **A**njad, and **M**artijn.
+![logo](./logo.png)
+
+**You can access the game live on: [Link](https://gramarcade.netlify.app/)**
 
 ## Game 1: Super Mat
 
