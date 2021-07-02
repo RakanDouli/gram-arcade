@@ -119,6 +119,7 @@ input:focus {
 }
 /* text */
 .text {
+  margin-top: 4rem;
   color: rgb(210, 210, 210);
   width: 80%;
   display: flex;
