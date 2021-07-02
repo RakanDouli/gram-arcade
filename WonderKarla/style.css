@@ -130,13 +130,14 @@ input:focus {
 .info {
   width: 70%;
   padding: 3rem;
+  border-right: 2px solid rgb(210, 210, 210);
 }
 .scores {
   width: 30%;
   padding: 3rem;
-  border-left: 2px solid rgb(210, 210, 210);
+  height: 45rem;
+  overflow: scroll;
 }
-/*  */
 
 .developedby {
   position: relative;
